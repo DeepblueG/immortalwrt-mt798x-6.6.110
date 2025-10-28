@@ -68,7 +68,7 @@ To build your own firmware you need a GNU/Linux, BSD or macOS system (case sensi
      cp -f defconfig/mt7986-ax6000.config .config
 
   6. Run `make menuconfig` to select your preferred configuration for the toolchain, target system & firmware packages.   
-  7. Run `make V=s`or`make -j(nproc) V=s` to build your firmware. This will download all sources, build the cross-compile toolchain and then cross-compile the GNU/Linux kernel & all chosen applications for your target system.
+  7. Run `make V=s`or`make -j$(nproc) V=s` to build your firmware. This will download all sources, build the cross-compile toolchain and then cross-compile the GNU/Linux kernel & all chosen applications for your target system.
 
   ### Related Repositories
   The main repository uses multiple sub-repositories to manage packages of different categories. All packages are installed via the OpenWrt package manager called opkg. If you're looking to develop the web interface or port packages to ImmortalWrt, please find the fitting repository below.
