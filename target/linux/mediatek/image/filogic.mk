@@ -620,6 +620,17 @@ define Device/cmcc_rax3000m_common
 	pad-rootfs | append-metadata
 endef
 
+define Device/cmcc_rax3000m
+  DEVICE_VENDOR := CMCC
+  DEVICE_MODEL := RAX3000M NAND
+  DEVICE_DTS := mt7981b-cmcc-rax3000m
+  $(call Device/cmcc_rax3000m_common)
+  ARTIFACTS += nand-preloader.bin nand-bl31-uboot.fip
+  ARTIFACT/nand-preloader.bin := mt7981-bl2 spim-nand-ddr4
+  ARTIFACT/nand-bl31-uboot.fip := mt7981-bl31-uboot cmcc_rax3000m-nand
+endef
+TARGET_DEVICES += cmcc_rax3000m
+
 define Device/cmcc_rax3000m-emmc
   DEVICE_VENDOR := CMCC
   DEVICE_MODEL := RAX3000M (eMMC version)
@@ -633,17 +644,6 @@ define Device/cmcc_rax3000m-emmc
   IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
 endef
 TARGET_DEVICES += cmcc_rax3000m-emmc
-
-define Device/cmcc_rax3000m
-  DEVICE_VENDOR := CMCC
-  DEVICE_MODEL := RAX3000M NAND
-  DEVICE_DTS := mt7981b-cmcc-rax3000m
-  $(call Device/cmcc_rax3000m_common)
-  ARTIFACTS += nand-preloader.bin nand-bl31-uboot.fip
-  ARTIFACT/nand-preloader.bin := mt7981-bl2 spim-nand-ddr4
-  ARTIFACT/nand-bl31-uboot.fip := mt7981-bl31-uboot cmcc_rax3000m-nand
-endef
-TARGET_DEVICES += cmcc_rax3000m
 
 define Device/cmcc_rax3000m-stock
   DEVICE_VENDOR := CMCC
